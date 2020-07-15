@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block breadcrumb %}{{ block.super }} > Admin page > New Post{% endblock %}
+
+{% block content %}
+
+    <div class="form">
+        <form method="POST" action='.'>
+            {%csrf_token%}
+            {{form.as_p}}
+         
+            
+            <p><input type="submit" value="Submit"></p> 
+        </form>
+    </div>
+
+{% endblock %}

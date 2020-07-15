@@ -1,0 +1,41 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% block breadcrumb %}{{ block.super }} > {{post.title}}{% endblock %}
+
+{% block content %}
+
+<div class="blog-item">
+    <h2><a href="{{post.get_absolute_url}}">{{post.title}}</a></h2>
+    <div class="info">
+        By <span><a href="#">{{post.author}}</a></span> | In <span><a href="#">{{post.category}}</a></span> | On <span>{{post.pub_date}}</span> | &#x1f441 <span>{{post.view_count}} Views</span> 
+    </div>
+    <p>{{post.content}}</p>
+</div>
+
+    <div class="form">
+        <form method="POST" action='.'>
+            {%csrf_token%}
+            {{form.as_p}}
+         
+            
+            <p><input type="submit" value="Submit"></p> 
+        </form>
+    </div>
+
+
+    <div class="comments-list">
+        {%for cmt in comments%}
+        <div class="comment">
+            <img src="{% static 'blog/images/avatar.png' %}" alt="avatar">
+            <div class="info">
+                <p>{{cmt.author}}<span> . {{cmt.timestamp}}</span></p>
+                <p>{{cmt.content}}</p>
+            </div>   
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
