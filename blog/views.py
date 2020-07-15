@@ -152,5 +152,30 @@ class PostCategory(PageContentMixin,ListView):
         return context     
 
 
+# class Home(View):
+#     def get(self,request,*args,**kwargs):
+#         posts = Post.objects.all()
+#         return render(request,'blog/home.html',{'posts':posts})
 
+
+# class PostDetail(View):
+#     #similar to detail of function based view 
+#     def get(self,request,pk,*args,**kwargs):
+#         #class based views fetches by default by slug,or pk
+#         post = get_object_or_404(Post,pk=pk)
+#         return render(request,'blog/post_detail.html',{'post':post})
+
+
+# class PostCreate(View):
+    
+#     def get(self,request,*args,**kwargs):
+#         form =PostForm
+#         return render(request,'blog/post_form.html',{'form':form})
+
+#     def post(self,request,*args,**kwargs):
+#         form=PostForm(request.POST)  
+#         if form.is_valid:
+#             form.save()
+#             return redirect('blog:home') 
+#         return render(request,'blog/post_form.html',{'form':form}) 
 
